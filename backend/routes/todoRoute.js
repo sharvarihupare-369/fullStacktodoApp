@@ -1,26 +1,38 @@
 const express = require("express")
 const TodoModel = require("../models/todoModel")
-const validator = require("../middleware/validator")
+const validator = require("../middlewares/validator")
+const auth = require("../middlewares/authMiddleware")
 const todoRoute = express.Router()
 
-todoRoute.post("/addtodo",validator,async(req,res)=>{
+todoRoute.post("/addtodo",auth,validator,async(req,res)=>{
+
     try {
-        const todo = await TodoModel.create(req.body)
+        const {title,priority,status,created_at} = req.body
+        const todo = await TodoModel.create({title,priority,status,created_at,userId:req.userId,name:req.name})
+        // await todo.populate("creator")
         res.status(200).send({"msg":"Todo added successfully",todo})
     } catch (error) {
         res.status(400).send({'errormsg':error.message})
     }
+
 })
 
 
-todoRoute.get("/",async(req,res)=>{
+todoRoute.get("/",auth,async(req,res)=>{
     const {q} =  req.query;
+    const userId = req.userId
+    const page = req.query.page
+    const limit = req.query.limit;
+
     try {
-        if(!q){
-            const todos = await TodoModel.find(req.query)
+       let pageNum = +page || 1
+       let skip = (pageNum-1) * limit
+       let limitPage = +limit || 5      
+        if(q){
+            const todos = await TodoModel.find({ title: { $regex: q, $options: "i" } , userId }).skip(skip).limit(limitPage)
             res.status(200).send(todos)
         }else{
-            const todos = await TodoModel.find({ title: { $regex: q, $options: "i" } })
+            const todos = await TodoModel.find({userId}).skip(skip).limit(limitPage)
             res.status(200).send(todos)
         }
     } catch (error) {
@@ -28,33 +40,37 @@ todoRoute.get("/",async(req,res)=>{
     }
 })
 
-todoRoute.get("/:id",async(req,res)=>{
-    const id = req.params.id
+
+
+
+todoRoute.patch("/update/:id",auth,async(req,res)=>{
+    const id = req.params.id;
+    const userId = req.userId
+    const user = await TodoModel.findOne({_id:id})
     try {
-         const todo = await TodoModel.findById({_id:id})
-         res.status(200).send(todo)
+        if(userId == user.userId.toString()){
+            const updatedTodos = await TodoModel.findByIdAndUpdate({_id:id},req.body,{new:true})
+            res.status(200).send({"msg":"Todos updated successfully",updatedTodos})
+        }else{
+            res.status(400).send({"msg":"You are not allowed to update"})
+        }
     } catch (error) {
         res.status(400).send({'errormsg':error.message})
     }
 })
 
 
-todoRoute.patch("/update/:id",async(req,res)=>{
+todoRoute.delete("/delete/:id",auth,async(req,res)=>{
     const id = req.params.id;
+    const userId = req.userId
+    const user = await TodoModel.findOne({_id:id})
     try {
-        const todo = await TodoModel.findByIdAndUpdate({_id:id},req.body,{new:true})
-        res.status(200).send({"msg":"Todo is updated",todo})
-    } catch (error) {
-        res.status(400).send({'errormsg':error.message})
-    }
-})
-
-
-todoRoute.delete("/delete/:id",async(req,res)=>{
-    const id = req.params.id;
-    try {
-        const todo = await TodoModel.findByIdAndDelete({_id:id})
-        res.status(200).send({"msg":"Todo is deleted"})
+        if(userId == user.userId.toString()){
+            const todo = await TodoModel.findByIdAndDelete({_id:id})
+            res.status(200).send({"msg":"Todo is deleted"})
+        }else{
+            res.status(400).send({"msg":"You are not allowed to delete"})
+        }
     } catch (error) {
         res.status(400).send({'errormsg':error.message})
     }
