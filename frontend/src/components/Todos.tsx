@@ -2,6 +2,7 @@ import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 import TodoInput from './TodoInput'
 import Navbar from './Navbar'
+import TodoItem from './TodoItem'
 
 const Todos = () => {
   return (
@@ -11,7 +12,7 @@ const Todos = () => {
     <Navbar/>
     <TodoInput/>
 
-
+   <TodoItem/>
    </Box>
   )
 }

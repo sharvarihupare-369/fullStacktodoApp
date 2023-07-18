@@ -3,7 +3,7 @@ import React from 'react'
 
 const Sidebar = () => {
   return (
-    <Box p="10px" color={"white"} bg="#FFB56B" h="100vh" w="15%">
+    <Box p="10px" color={"white"} bg="#FFB56B" w="15%">
         <Box mt="30px">
         <Box   mt="40px" >
             <Heading transition={"ease-out"} cursor={"pointer"} _hover={{fontSize:"22px" , borderBottom:"1px solid white",scale:"125"}}  as="h5" size="md" fontSize={"20px"}>All tasks</Heading>

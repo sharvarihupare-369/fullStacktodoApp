@@ -1,5 +1,6 @@
-import { Box, Heading,Text } from '@chakra-ui/react'
+import { Box, Flex, Heading,Text } from '@chakra-ui/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 const Navbar = () => {
 
   const mothArr = ["January","February","March","April","May","June","July","August","September","October","November","December"]
@@ -26,9 +27,16 @@ const Navbar = () => {
  const currDay = (`${currdate} ${date} ${day}`)
   return (
     <Box >
-   
+      {/* <Navbar/> */}
       {/* <Heading>{presentDay}</Heading> */}
+      <Flex justifyContent={"space-between"}>
       <Heading color={"#FFB56B"}>{currDay}</Heading>
+      <Box>
+
+      <Link to="/signup">Signup</Link>
+      <Link to="/login">Login</Link>
+      </Box>
+      </Flex>
       {/* <Text></Text> */}
         
       <Text color={"gray.400"}>Manage your tasks!</Text>

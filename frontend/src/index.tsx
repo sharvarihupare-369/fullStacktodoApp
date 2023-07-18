@@ -16,7 +16,6 @@ const root = ReactDOM.createRoot(container)
 root.render(
    <>
   <ChakraProvider theme={theme}>
-
    <Provider store={store}>
    <BrowserRouter>
     <ColorModeScript />
