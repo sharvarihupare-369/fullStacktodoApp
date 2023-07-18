@@ -5,7 +5,7 @@ import axios from "axios"
 
 export const getTodos = () => (dispatch:any) => {
    dispatch({type:TODO_REQUEST})
-   axios.get("http://localhost:8080/todos/").then((res)=>{
+   axios.get(`${baseUrl}/todos/`).then((res)=>{
     // console.log(res)
     dispatch({type:GET_TODO_SUCCESS,payload:res.data})
    }).catch((err)=>{

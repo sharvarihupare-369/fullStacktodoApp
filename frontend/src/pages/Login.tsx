@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { login } from '../redux/authReducer/action';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Login() {
 
@@ -25,6 +26,8 @@ export default function Login() {
   const toast = useToast()
   const dispatch: Dispatch<any> = useDispatch()
   const {isAuth,token,isError} = useSelector((store:any) => store.authReducer)
+  const navigate = useNavigate()
+  const location = useLocation()
 
    const handleLogin = (e:React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
@@ -33,13 +36,13 @@ export default function Login() {
         pass
        }
        dispatch(login(userDetails))
-       setEmail("")
-       setPass("")
+       
    }
 
    useEffect(()=>{
       if(token){
         localStorage.setItem("isAuth",JSON.stringify(isAuth))
+        if(location.pathname === '/login'){
         toast({
           title: 'Success',
           description: 'User Logged in successfully',
@@ -48,6 +51,10 @@ export default function Login() {
           duration: 4000,
           isClosable: true,
         })
+        setTimeout(() => {
+          navigate('/');
+        }, 4000);
+      }
       }
       else if(isError){
         toast({

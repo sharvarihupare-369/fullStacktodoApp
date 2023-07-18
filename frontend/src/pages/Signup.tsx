@@ -53,7 +53,7 @@ import { signup } from '../redux/authReducer/action';
     const handleSubmit = (e:React.FormEvent<HTMLFormElement> ) => {
       e.preventDefault()
        dispatch(signup(formdata))
-       setFormdata("")
+       
       
     }
 
