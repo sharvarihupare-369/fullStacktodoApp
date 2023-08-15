@@ -26,20 +26,26 @@ const Navbar = () => {
  const presentDay = (`${date}-${currdate}-${year}, ${day}`);
  const currDay = (`${currdate} ${date} ${day}`)
   return (
-    <Box >
+    <Box color={"white"} w="90%" m="auto">
       {/* <Navbar/> */}
       {/* <Heading>{presentDay}</Heading> */}
       <Flex justifyContent={"space-between"}>
-      <Heading color={"#FFB56B"}>{currDay}</Heading>
-      <Box>
-
-      <Link href="/signup">Signup</Link>
-      <Link href="/login">Login</Link>
-      </Box>
+      <Heading color={"#F57C00"}>{currDay}</Heading>
+      
+      <Flex w="15%" alignItems={"center"}   justifyContent={"space-around"}  >
+      {/* <Box> */}
+      
+      <Link textDecoration={"none"}  bg="#F57C00" p="5px 10px" fontSize={"17px"} borderTopLeftRadius={"10px"} borderBottomRightRadius={"10px"}  href="/signup">Signup</Link>
+      {/* </Box> */}
+      {/* <Box> */}
+      <Link  bg="#F57C00" p="5px 10px"  fontSize={"17px"} borderTopLeftRadius={"10px"} borderBottomRightRadius={"10px"} href="/login">Login</Link>
+      {/* </Box> */}
+      </Flex>
+    
       </Flex>
       {/* <Text></Text> */}
         
-      <Text color={"gray.400"}>Manage your tasks!</Text>
+      <Text color={"gray.300"} >Manage your tasks!</Text>
     
     </Box>
     

@@ -28,6 +28,7 @@ export default function Login() {
   const {isAuth,token,isError} = useSelector((store:any) => store.authReducer)
   const navigate = useNavigate()
   const location = useLocation()
+  // console.log(token)
 
    const handleLogin = (e:React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
@@ -36,7 +37,7 @@ export default function Login() {
         pass
        }
        dispatch(login(userDetails))
-       
+
    }
 
    useEffect(()=>{
@@ -51,6 +52,7 @@ export default function Login() {
           duration: 4000,
           isClosable: true,
         })
+        localStorage.setItem("todo-token",token)
         setTimeout(() => {
           navigate('/');
         }, 4000);
@@ -70,7 +72,8 @@ export default function Login() {
 
 
   return (
-    <Box bg={"#FDF6DF"}>
+    <Box bg={"#FDF6DF"} bgGradient="linear(to-r, #000046, #1CB5E0)"    bgSize="cover"
+    bgPosition="center" minH={"100vh"}>
       <form onSubmit={handleLogin}>
 
     <Flex
@@ -81,9 +84,9 @@ export default function Login() {
       >
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+          <Heading fontSize={'4xl'} color={"white"}>Login to your account</Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
-            to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
+            {/* to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️ */}
           </Text>
         </Stack>
         <Box

@@ -21,6 +21,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { signup } from '../redux/authReducer/action';
+import { useNavigate } from 'react-router-dom';
 
  export type Formdata = {
     name : string,
@@ -35,6 +36,7 @@ import { signup } from '../redux/authReducer/action';
     const dispatch: Dispatch<any>  = useDispatch()
     const {isError,isRegistered} = useSelector((store:any) => store.authReducer)
     const toast = useToast()
+    const navigate = useNavigate()
 
     const [formdata,setFormdata] = useState<Formdata>({
       name:"",
@@ -53,8 +55,6 @@ import { signup } from '../redux/authReducer/action';
     const handleSubmit = (e:React.FormEvent<HTMLFormElement> ) => {
       e.preventDefault()
        dispatch(signup(formdata))
-       
-      
     }
 
 
@@ -79,13 +79,23 @@ import { signup } from '../redux/authReducer/action';
           duration: 4000,
           isClosable: true,
         })
+        setTimeout(()=>{
+          navigate("/login")
+        },4000)
+        setFormdata({ name:"",
+        email:"",
+        pass:"",
+        age:""
+      })
+      return
       }
     }, [isError, isRegistered])
 
     
   
     return (
-      <Box bg={"#FDF6DF"} minH={"100vh"}>
+      <Box bg={"#FDF6DF"}  bgGradient="linear(to-r, #000046, #1CB5E0)"    bgSize="cover"
+      bgPosition="center" minH={"100vh"}>
       <form onSubmit={handleSubmit}>
       <Flex
         minH={'100vh'}
@@ -95,12 +105,12 @@ import { signup } from '../redux/authReducer/action';
         >
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Stack align={'center'}>
-            <Heading fontSize={'4xl'} textAlign={'center'}>
+            <Heading fontSize={'4xl'} color={"white"} textAlign={'center'}>
               Sign up
             </Heading>
-            <Text fontSize={'lg'} color={'gray.600'}>
+            {/* <Text fontSize={'lg'} color={'gray.600'}>
               to enjoy all of our cool features ✌️
-            </Text>
+            </Text> */}
           </Stack>
           <Box
             rounded={'lg'}

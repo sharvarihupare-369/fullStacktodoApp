@@ -1,8 +1,9 @@
 import {
+    AUTH_LOGIN_SUCCESS,
     AUTH_REGISTER_SUCCESS,
     AUTH_REQ,
     AUTH_REQ_FAILURE,
-    AUTH_REQ_SUCCESS,
+    
 } from "./actionTypes";
 
 let InitialState = {
@@ -46,7 +47,7 @@ export const reducer = (state = InitialState, { type, payload }: Action) => {
                 isRegistered: "",
             };
         }
-        case AUTH_REQ_SUCCESS: {
+        case AUTH_LOGIN_SUCCESS: {
             return {
                 isAuth: true,
                 isError: "",

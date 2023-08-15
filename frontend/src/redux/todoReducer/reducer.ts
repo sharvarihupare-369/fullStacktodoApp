@@ -1,11 +1,12 @@
 
-import { GET_TODO_SUCCESS, TODO_FAILURE, TODO_REQUEST } from "./actionTypes";
+import { DELETE_TODOS, DELETE_TODOS_FAILURE, GET_TODO_SUCCESS, TODO_FAILURE, TODO_REQUEST } from "./actionTypes";
 
 const initialState = {
     data : [],
     isLoading : false,
     isError : false,
-    errorMsg : ''
+    errorMsg : '',
+    deletedMsg : ""
 }
 
 type Action = {
@@ -39,6 +40,23 @@ export const reducer = (state = initialState, {type, payload}:Action) => {
               iError : true,
               errorMsg : payload
           }
+      }
+
+      case DELETE_TODOS : {
+        return {
+            ...state,
+            isLoading : false,
+            iError : false,
+            deletedMsg : payload
+        }
+      }
+      case DELETE_TODOS_FAILURE : {
+        return {
+            ...state,
+            isLoading : false,
+            iError : false,
+            
+        }
       }
 
       default : {
