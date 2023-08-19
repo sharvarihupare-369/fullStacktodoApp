@@ -103,7 +103,7 @@ const TodoItem = () => {
       const dateA = new Date(a.created_at);
       const dateB = new Date(b.created_at);
       // return dateB - dateA; 
-      return dateB.getTime() - dateA.getTime()
+      return Number(dateB.getTime()) - Number(dateA.getTime())
     });
 
   const handleToggle = async (id: string) => {
@@ -157,64 +157,28 @@ const TodoItem = () => {
     setFilteredTodos(data);
   }, [data]);
 
-  useEffect(() => {
-    // if (updatedMsg) {
-    //   updateToast({
-    //     title: "Todo is updated",
-    //     description: deletedMsg,
-    //     position: "top",
-    //     status: "success",
-    //     duration: 4000,
-    //     isClosable: true,
-    //     id: deletedMsg,
-    //   });
-
-    //   return;
-    // }
-
-    if (deletedMsg) {
-      deleteToast({
-        title: "Todo is deleted",
-        description: deletedMsg,
-        position: "top",
-        status: "success",
-        duration: 4000,
-        isClosable: true,
-        id: deletedMsg,
-      });
-    }
-    if (errorMsg) {
-      errtoast({
-        title: "Todo not deleted",
-        description: errorMsg,
-        position: "top",
-        status: "error",
-        duration: 4000,
-        isClosable: true,
-      });
-      // return
-    }
-  }, [updatedMsg, deletedMsg, errorMsg, token]);
+ 
 
   return (
     <>
     
+      <Flex  w={{ base: "100%", sm: "100%", md: "90%", lg: "60%", xl: "50%" }} mt="20px" justifyContent={"center"} alignItems={"center"}>
 
-      {/* <Menu >
-        <MenuButton ><HamburgerIcon style={{
+      <Menu>
+        <MenuButton><HamburgerIcon style={{
           color: "white",
-          // margin: "40px 70px",
-          fontSize: "20px",
+          fontSize: "30px",
           display: "flex",
           justifyContent: "left",
         }}/></MenuButton>
         <MenuList>
-          <MenuItem>All</MenuItem>
-          <MenuItem>Pending</MenuItem>
-          <MenuItem>Completed</MenuItem>
+          <MenuItem _hover={{bg:"#F57C00",color:"white"}} onClick={handleAllTodos}>All</MenuItem>
+          <MenuItem _hover={{bg:"#F57C00",color:"white"}} onClick={handlePendingTodos}>Pending</MenuItem>
+          <MenuItem _hover={{bg:"#F57C00",color:"white"}} onClick={handleCompleted}>Completed</MenuItem>
           
         </MenuList>
-      </Menu> */}
+      </Menu>
+      </Flex>
 
       <Box
         p={"10px 15px"}
@@ -222,9 +186,9 @@ const TodoItem = () => {
         m={"30px auto"}
       >
         <Flex justifyContent={"space-around"} alignItems={"center"} m="10px">
-        <Button onClick={handleAllTodos}>All Todos :-{totalTodos}</Button>
+        {/* <Button onClick={handleAllTodos}>All Todos :-{totalTodos}</Button>
         <Button onClick={handlePendingTodos}>Pending</Button>
-        <Button onClick={handleCompleted}>Completed</Button>
+        <Button onClick={handleCompleted}>Completed</Button> */}
         </Flex>
         {/* <Text color={"white"}>Total Todos: {</Text> */}
         <Heading color={"#E0E0E0"} size={"md"}>
@@ -360,6 +324,6 @@ const TodoItem = () => {
     
     </>
   );
-};
+  }
 
 export default TodoItem;

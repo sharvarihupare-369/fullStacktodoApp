@@ -128,7 +128,7 @@ const Navbar = () => {
             </form>  : ""
        }
        </Flex>
-        <Flex w="15%" gap="7px" alignItems={"center"} justifyContent={"space-around"}>
+        <Flex w="10%" gap="5px" alignItems={"center"} justifyContent={"space-around"}>
           {/* <Box> */}
         {/* {
           toggleSearch ? <Input variant='filled' placeholder='Filled' /> : ""
