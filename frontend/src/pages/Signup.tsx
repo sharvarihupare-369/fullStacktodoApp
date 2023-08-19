@@ -14,14 +14,17 @@ import {
     useColorModeValue,
     Link,
     useToast,
+    Image
 
   } from '@chakra-ui/react';
   import { useEffect, useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
+import 'animate.css';
 import { Dispatch } from 'redux';
 import { signup } from '../redux/authReducer/action';
 import { useNavigate } from 'react-router-dom';
+import signupImg from '../Assets/signup.avif'
 
  export type Formdata = {
     name : string,
@@ -96,7 +99,9 @@ import { useNavigate } from 'react-router-dom';
     return (
       <Box bg={"#FDF6DF"}  bgGradient="linear(to-r, #000046, #1CB5E0)"    bgSize="cover"
       bgPosition="center" minH={"100vh"}>
-      <form onSubmit={handleSubmit}>
+      <Flex  justifyContent={"space-around"} alignItems={"center"}>
+       
+      <form className="animate__animated animate__zoomInDown" style={{width:"50%"}} onSubmit={handleSubmit}>
       <Flex
         minH={'100vh'}
         align={'center'}
@@ -174,6 +179,10 @@ import { useNavigate } from 'react-router-dom';
         </Stack>
       </Flex>
       </form>
+      <Box w="50%">
+          <Image w="100%"  src={signupImg} />
+        </Box>
+      </Flex>
     </Box>
     );
   }

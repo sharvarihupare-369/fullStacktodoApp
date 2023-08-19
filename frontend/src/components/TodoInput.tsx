@@ -1,5 +1,5 @@
 
-import { Box, Button, Flex, Input } from '@chakra-ui/react'
+import { Box, Button, Flex, Input, useToast } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import {AddIcon} from '@chakra-ui/icons'
 import { Dispatch } from 'redux'
@@ -20,6 +20,7 @@ const TodoInput = () => {
   // const {token} = useSelector((store:any)=>store.authReducer)
   // console.log(token)
   const token = localStorage.getItem("todo-token") || ""
+  const errtoast = useToast()
 
   const handleSubmit = async(e:React.FormEvent<HTMLFormElement>) => {
    e.preventDefault()
@@ -29,9 +30,20 @@ const TodoInput = () => {
      priority:Math.ceil(Math.random()*10),
      status:false
    }
+   if(!title){
+    errtoast({
+      title: "Todo is not added",
+      description: "Please Enter Valid Todo!",
+      position: "top",
+      status: "error",
+      duration: 4000,
+      isClosable: true,
+    });
+   }
   await dispatch(postTodos(newTodo,token))
   setTitle("")
   dispatch(getTodos(token))
+  // dispatch(getTodos(token,"",page,limit));
   
   }
 

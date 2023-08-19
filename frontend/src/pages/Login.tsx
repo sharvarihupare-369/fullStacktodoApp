@@ -12,12 +12,15 @@ import {
   Text,
   useColorModeValue,
   useToast,
+  Image
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 import { login } from '../redux/authReducer/action';
 import { useLocation, useNavigate } from 'react-router-dom';
+import signupImg from '../Assets/signup.avif'
+import 'animate.css';
 
 export default function Login() {
 
@@ -74,7 +77,9 @@ export default function Login() {
   return (
     <Box bg={"#FDF6DF"} bgGradient="linear(to-r, #000046, #1CB5E0)"    bgSize="cover"
     bgPosition="center" minH={"100vh"}>
-      <form onSubmit={handleLogin}>
+      <Flex justifyContent={"space-around"} alignItems={"center"}>
+
+      <form className="animate__animated animate__zoomInDown" style={{width:"50%"}} onSubmit={handleLogin}>
 
     <Flex
       minH={'100vh'}
@@ -82,7 +87,7 @@ export default function Login() {
       justify={'center'}
       // bg={useColorModeValue('gray.50', 'gray.800')}
       >
-      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+      <Stack spacing={8} mx={'auto'} w={'lg'} py={12} px={6}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} color={"white"}>Login to your account</Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
@@ -130,6 +135,10 @@ export default function Login() {
       </Stack>
     </Flex>
      </form>
+     <Box w="50%">
+          <Image w="100%"  src={signupImg} />
+        </Box>
+      </Flex>
     </Box>
   );
 }

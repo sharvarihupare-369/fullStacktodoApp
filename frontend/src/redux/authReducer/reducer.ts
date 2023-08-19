@@ -1,5 +1,7 @@
 import {
     AUTH_LOGIN_SUCCESS,
+    AUTH_LOGOUT_FAILURE,
+    AUTH_LOGOUT_SUCCESS,
     AUTH_REGISTER_SUCCESS,
     AUTH_REQ,
     AUTH_REQ_FAILURE,
@@ -12,6 +14,8 @@ let InitialState = {
     isLoading: false,
     token: "",
     isRegistered: "",
+    isLogout : false,
+    logoutMsg : ''
 };
 
 type Action = {
@@ -55,6 +59,23 @@ export const reducer = (state = InitialState, { type, payload }: Action) => {
                 token: payload,
                 isRegistered: "",
             };
+        }
+        case  AUTH_LOGOUT_SUCCESS : {
+            return {
+                ...state,
+                isLoading : false,
+                isLogout : true,
+                logoutMsg:payload
+
+            }
+        }
+        case AUTH_LOGOUT_FAILURE : {
+            return {
+                ...state,
+                isLoading : false,
+                isLogout : false,
+                isError : payload
+            }
         }
         default: {
             return state;
