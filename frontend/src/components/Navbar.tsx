@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text, Link, Input, useToast } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, Link, Input, useToast,Image } from "@chakra-ui/react";
 import React from "react";
 import { IconButton } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
@@ -8,6 +8,7 @@ import { getTodos } from "../redux/todoReducer/action";
 import { Dispatch } from "redux";
 import { logout } from "../redux/authReducer/action";
 import { useNavigate } from "react-router-dom";
+import signupimg from '../Assets/user.png'
 // import {  } from 'react-router-dom'
 const Navbar = () => {
 
@@ -103,11 +104,13 @@ const Navbar = () => {
   const presentDay = `${date}-${currdate}-${year}, ${day}`;
   const currDay = `${currdate} ${date} ${day}`;
   return (
+    <>
     <Box color={"white"} w="90%" m="auto">
       {/* <Navbar/> */}
       {/* <Heading>{presentDay}</Heading> */}
-      <Flex justifyContent={"space-between"}>
+      <Flex alignItems={"center"} flexDirection={{base:"column",sm:"column",md:"row",lg:"row",xl:"row","2xl":"row"}} justifyContent={{base:"space-around",sm:"space-around",md:"space-around",lg:"space-around",xl:"space-around","2xl":"space-around"}}>
         <Heading color={"#F57C00"}>{currDay}</Heading>
+        
         <Flex  w="55%" alignItems={"center"} justifyContent={"flex-end"}>
 
       
@@ -128,7 +131,7 @@ const Navbar = () => {
             </form>  : ""
        }
        </Flex>
-        <Flex w="10%" gap="5px" alignItems={"center"} justifyContent={"space-around"}>
+        <Flex w="10%" gap="5px" alignItems={"center"} flexDirection={{base:"column",sm:"column",md:"row",lg:"row",xl:"row","2xl":"row"}} justifyContent={{base:"space-around",sm:"space-around",md:"space-around",lg:"space-around",xl:"space-around","2xl":"space-around"}}>
           {/* <Box> */}
         {/* {
           toggleSearch ? <Input variant='filled' placeholder='Filled' /> : ""
@@ -139,6 +142,7 @@ const Navbar = () => {
 
           <Link
             textDecoration={"none"}
+            ml="10px"
             bg="#F57C00"
             p="8px 10px"
             fontSize={"17px"}
@@ -146,6 +150,7 @@ const Navbar = () => {
             borderBottomRightRadius={"10px"}
             href="/signup"
           >
+            {/* <Image src={signupimg} /> */}
             Signup
           </Link>
           {/* </Box> */}
@@ -178,8 +183,10 @@ const Navbar = () => {
       </Flex>
       {/* <Text></Text> */}
 
-      <Text color={"gray.300"}>Manage your tasks!</Text>
+     
     </Box>
+     {/* <Text color={"gray.300"}>Manage your tasks!</Text> */}
+     </>
   );
 };
 

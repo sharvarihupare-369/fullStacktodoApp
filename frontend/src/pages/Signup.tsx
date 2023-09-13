@@ -57,6 +57,17 @@ import signupImg from '../Assets/signup.avif'
 
     const handleSubmit = (e:React.FormEvent<HTMLFormElement> ) => {
       e.preventDefault()
+      if(!formdata.age || !formdata.name || !formdata.email || !formdata.pass){
+        toast({
+          title: 'Please fill all the fields',
+          // description: ,
+          position : 'top',
+          status: 'warning',
+          duration: 4000,
+          isClosable: true,
+        })
+        return
+      }
        dispatch(signup(formdata))
     }
 
@@ -97,18 +108,25 @@ import signupImg from '../Assets/signup.avif'
     
   
     return (
-      <Box bg={"#FDF6DF"}  bgGradient="linear(to-r, #000046, #1CB5E0)"    bgSize="cover"
-      bgPosition="center" minH={"100vh"}>
-      <Flex  justifyContent={"space-around"} alignItems={"center"}>
+      <Box bg={"#FDF6DF"}  bgGradient="linear(to-r, #000046, #1CB5E0)"  
+        // bgSize="cover"
+      // bgPosition="center"
+       >
+      <Flex
+        justifyContent={{base:"center",sm:"center",md:"center",lg:"space-around",xl:"space-around","2xl":"space-around"}}
+         flexDirection={{base:"column",sm:"column",md:"column",lg:"row",xl:"row","2xl":"row"}} alignItems={"center"} >
        
+     
       <form className="animate__animated animate__zoomInDown" style={{width:"50%"}} onSubmit={handleSubmit}>
       <Flex
+     
+      // w={{base:"90%"}}
         minH={'100vh'}
         align={'center'}
         justify={'center'}
         // bg={useColorModeValue('gray.50', 'gray.800')}
         >
-        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+        <Stack  >
           <Stack align={'center'}>
             <Heading fontSize={'4xl'} color={"white"} textAlign={'center'}>
               Sign up
@@ -118,30 +136,32 @@ import signupImg from '../Assets/signup.avif'
             </Text> */}
           </Stack>
           <Box
+           
             rounded={'lg'}
             bg={useColorModeValue('white', 'gray.700')}
             boxShadow={'lg'}
-            p={8}>
+            p={8}
+            >
             <Stack spacing={4}>
-              <HStack>
+              
                 <Box>
-                  <FormControl id="firstName" isRequired>
+                  <FormControl id="firstName">
                     <FormLabel>Name</FormLabel>
                     <Input type="text" value={formdata.name} name="name" onChange={(e)=>handleChange(e)} />
                   </FormControl>
                 </Box>
-                <Box>
+                
+              <Box >
                   <FormControl id="lastName">
                     <FormLabel>Age</FormLabel>
                     <Input type="text" value={formdata.age} name="age" onChange={(e)=>handleChange(e)} />
                   </FormControl>
                 </Box>
-              </HStack>
-              <FormControl id="email" isRequired>
+              <FormControl id="email" >
                 <FormLabel>Email address</FormLabel>
                 <Input type="email" value={formdata.email} name="email" onChange={(e)=>handleChange(e)} />
               </FormControl>
-              <FormControl id="password" isRequired>
+              <FormControl id="password" >
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
                   <Input type={showPassword ? 'text' : 'password'} value={formdata.pass} name="pass" onChange={(e)=>handleChange(e)} />
@@ -179,7 +199,8 @@ import signupImg from '../Assets/signup.avif'
         </Stack>
       </Flex>
       </form>
-      <Box w="50%">
+      {/* <Box w="50%"> */}
+      <Box display={{base:"none",sm:"none",md:"none",lg:"block"}} w={{base:"100%",sm:"100%",md:"100%",lg:"50%",xl:"50%"}} mt={{base:"10px",sm:"10px","md":"10px",lg:"0"}} >
           <Image w="100%"  src={signupImg} />
         </Box>
       </Flex>

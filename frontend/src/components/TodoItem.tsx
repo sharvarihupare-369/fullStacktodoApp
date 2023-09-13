@@ -12,9 +12,12 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  IconButton
+  IconButton,
+  useMediaQuery,
+  Container
 } from "@chakra-ui/react";
 import React, { Dispatch, useEffect, useState } from "react";
+import 'animate.css';
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteTodo,
@@ -77,13 +80,16 @@ const TodoItem = () => {
   ];
 
 
+  // const reversedTodos = data.slice().reverse();
+  const [isLargerThanMD] = useMediaQuery("(min-width: 768px)");
+
   const handleAllTodos = async() => {
-    const sortedData = data.slice().sort((a:any, b:any) => {
-      const dateA = new Date(a.created_at);
-      const dateB = new Date(b.created_at);
-      return dateB.getTime() - dateA.getTime();
-    });
-    setFilteredTodos(sortedData)
+    // const sortedData = data.slice().sort((a:any, b:any) => {
+    //   const dateA = new Date(a.created_at);
+    //   const dateB = new Date(b.created_at);
+    //   return dateB.getTime() - dateA.getTime();
+    // });
+    setFilteredTodos(data)
   }
 
   
@@ -99,12 +105,7 @@ const TodoItem = () => {
     setFilteredTodos(completed)
   }
 
-     const sortedFilteredTodos = [...filteredTodos].sort((a, b) => {
-      const dateA = new Date(a.created_at);
-      const dateB = new Date(b.created_at);
-      // return dateB - dateA; 
-      return Number(dateB.getTime()) - Number(dateA.getTime())
-    });
+   
 
   const handleToggle = async (id: string) => {
     const todo = data.find((el: any) => el._id === id);
@@ -164,20 +165,32 @@ const TodoItem = () => {
     
       <Flex  w={{ base: "100%", sm: "100%", md: "90%", lg: "60%", xl: "50%" }} mt="20px" justifyContent={"center"} alignItems={"center"}>
 
-      <Menu>
-        <MenuButton><HamburgerIcon style={{
-          color: "white",
-          fontSize: "30px",
-          display: "flex",
-          justifyContent: "left",
-        }}/></MenuButton>
-        <MenuList>
-          <MenuItem _hover={{bg:"#F57C00",color:"white"}} onClick={handleAllTodos}>All</MenuItem>
-          <MenuItem _hover={{bg:"#F57C00",color:"white"}} onClick={handlePendingTodos}>Pending</MenuItem>
-          <MenuItem _hover={{bg:"#F57C00",color:"white"}} onClick={handleCompleted}>Completed</MenuItem>
+      {
+        token ? 
+      //   <Menu>
+      //   <MenuButton>
+      //     <HamburgerIcon style={{
+      //     color: "white",
+      //     fontSize: "30px",
+      //     display: "flex",
+      //     justifyContent: "left",
+      //   }}/></MenuButton>
+      //   <MenuList>
+      //     <MenuItem _hover={{bg:"#F57C00",color:"white"}} onClick={handleAllTodos}>All</MenuItem>
+      //     <MenuItem _hover={{bg:"#F57C00",color:"white"}} onClick={handlePendingTodos}>Pending</MenuItem>
+      //     <MenuItem _hover={{bg:"#F57C00",color:"white"}} onClick={handleCompleted}>Completed</MenuItem>
           
-        </MenuList>
-      </Menu>
+      //   </MenuList>
+      // </Menu> 
+   
+      <Flex alignItems={'center'} w={{ base: "100%", sm: "100%", md: "90%", lg: "60%", xl: "50%" }} justifyContent={"space-around"}>
+      <Button _hover={{bg:"#F57C00",color:"white"}} onClick={handleAllTodos}>All Todos</Button>
+      <Button _hover={{bg:"#F57C00",color:"white"}} onClick={handlePendingTodos}>Pending</Button>
+      <Button _hover={{bg:"#F57C00",color:"white"}} onClick={handleCompleted}>Completed</Button>
+      </Flex>
+    
+      : ""
+      }
       </Flex>
 
       <Box
@@ -191,8 +204,13 @@ const TodoItem = () => {
         <Button onClick={handleCompleted}>Completed</Button> */}
         </Flex>
         {/* <Text color={"white"}>Total Todos: {</Text> */}
+
+        {/* <Heading color={"#F57C00"} size={"md"}>
+         {token ?  `Total Todos : ${filteredTodos.length}` : ""}
+        </Heading> */}
+
         <Heading color={"#E0E0E0"} size={"md"}>
-          TODAY'S TASKS
+         {token ?  "TODAY'S TASKS" : ""}
         </Heading>
       
         { 
@@ -200,7 +218,7 @@ const TodoItem = () => {
           // console.log(el)
           return (
             <Flex
-          
+              className="animate__animated animate__bounceInLeft"
               boxShadow="rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px"
               bgGradient={el.status ?  "linear-gradient(to right, #000046, #01D0A9, #01D0A9)" : "linear(to-r, #000046, #1CB5E0, #01A9DB)"}
               
@@ -213,6 +231,7 @@ const TodoItem = () => {
               key={i}
               justifyContent={"space-between"}
               alignItems={"center"}
+              flexDirection={isLargerThanMD ? "row" : "column"}
             >
               <Flex alignItems={"center"} gap={"20px"}>
                 <Checkbox
@@ -265,8 +284,10 @@ const TodoItem = () => {
                textDecorationThickness={"2px"}
                textDecorationColor={"black"}
                fontSize={"lg"}
+               mb={isLargerThanMD ? "0" : "10px"}
               >
-                {el.created_at.split("T")[0]}
+                {/* {el?.created_at.split("T")[0]} */}
+                {el.created_at ? el.created_at.split("T")[0] : ""}
               </Text>
 
               <Flex gap={"10px"}>
@@ -282,8 +303,8 @@ const TodoItem = () => {
                   _hover={{ backgroundColor: "#237afe" }}
                   borderRadius={"50%"}
                   bg={"#237afe"}
-                 
                   color={"gray.200"}
+                  size={isLargerThanMD ? "md" : "sm"}
                 >
                   {<FaEdit />}
                 </Button>
@@ -296,6 +317,7 @@ const TodoItem = () => {
                   _hover={{ backgroundColor: "#e65b65" }}
                   bg={"#e65b65"}
                   borderRadius={"50%"}
+                  size={isLargerThanMD ? "md" : "sm"}
                 >
                   {<FaTrash />}
                 </Button>
@@ -312,7 +334,7 @@ const TodoItem = () => {
        <IconButton  isDisabled={page==1} onClick={()=>setPage(page-1)} aria-label='Search database' icon={<ArrowLeftIcon />}/>
         {
           new Array(totalPages).fill(0).map((_,ind)=>{
-            return <Button key={ind} isDisabled={page==ind+1} border={"2px solid #F57C00"} onClick={()=>setPage(ind+1)}>{ind+1}</Button>
+            return <Button size={isLargerThanMD ? "md" : "sm"} key={ind} isDisabled={page==ind+1} border={"2px solid #F57C00"} onClick={()=>setPage(ind+1)}>{ind+1}</Button>
           })
         }
         <IconButton isDisabled={page==totalPages}  onClick={()=>setPage(page+1)}  aria-label='Search database' icon={<ArrowRightIcon />}/>

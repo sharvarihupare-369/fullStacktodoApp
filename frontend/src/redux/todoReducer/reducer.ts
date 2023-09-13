@@ -1,5 +1,5 @@
 
-import { DELETE_TODOS, DELETE_TODOS_FAILURE, GET_TODO_SUCCESS, TODO_FAILURE, TODO_REQUEST, TOGGLE_TODOS_SUCCESS, UPDATE_TODOS_FAILURE, UPDATE_TODOS_SUCCESS } from "./actionTypes";
+import { ADD_TODO_SUCCESS, DELETE_TODOS, DELETE_TODOS_FAILURE, GET_TODO_SUCCESS, TODO_FAILURE, TODO_REQUEST, TOGGLE_TODOS_SUCCESS, UPDATE_TODOS_FAILURE, UPDATE_TODOS_SUCCESS } from "./actionTypes";
 
 export interface Todo {
     _id: string;
@@ -56,9 +56,21 @@ export const reducer = (state:TodoState = initialState, {type, payload}:Action) 
                 isLoading : true
             }
         }
+        // case ADD_TODO_SUCCESS: {
+          
+        //     return {
+        //       ...state,
+        //       isLoading: false,
+        //       data: [payload,...state.data],
+             
+        //     };
+         
+        //   }
+      
 
         case GET_TODO_SUCCESS : {
          const {todos,total} = payload as Payload
+        
           return {  
               ...state,
               isLoading : false,
