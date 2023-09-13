@@ -143,7 +143,8 @@ import signupImg from '../Assets/signup.avif'
             p={8}
             >
             <Stack spacing={4}>
-              
+              <HStack>
+
                 <Box>
                   <FormControl id="firstName">
                     <FormLabel>Name</FormLabel>
@@ -157,6 +158,7 @@ import signupImg from '../Assets/signup.avif'
                     <Input type="text" value={formdata.age} name="age" onChange={(e)=>handleChange(e)} />
                   </FormControl>
                 </Box>
+              </HStack>
               <FormControl id="email" >
                 <FormLabel>Email address</FormLabel>
                 <Input type="email" value={formdata.email} name="email" onChange={(e)=>handleChange(e)} />

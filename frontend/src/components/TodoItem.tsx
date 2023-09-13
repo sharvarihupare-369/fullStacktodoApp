@@ -62,6 +62,7 @@ const TodoItem = () => {
     const updateToast = useToast();
     const deleteToast = useToast();
     const errtoast = useToast();
+    const toast = useToast()
 
 
   let monthArr = [
@@ -97,11 +98,33 @@ const TodoItem = () => {
 
   const handlePendingTodos = () => {
      const pendingTodos = data.filter((el:any)=> !el.status)
+     if(pendingTodos.length === 0){
+       toast({
+        title: "No pending todos!",
+        // description: "Please Enter Valid Todo!",
+        position: "top",
+        status: "warning",
+        duration: 4000,
+        isClosable: true,
+      })
+      return
+     }
      setFilteredTodos(pendingTodos)
   }
 
   const handleCompleted = () => {
     const completed = data.filter((el:any)=> el.status)
+    if(completed.length === 0){
+      toast({
+       title: "No completed todos!",
+       // description: "Please Enter Valid Todo!",
+       position: "top",
+       status: "warning",
+       duration: 4000,
+       isClosable: true,
+     })
+     return
+    }
     setFilteredTodos(completed)
   }
 

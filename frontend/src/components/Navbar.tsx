@@ -121,6 +121,7 @@ const Navbar = () => {
       
           <Input bg="white" color={"gray.700"} focusBorderColor="#FFA726" value={search} onChange={(e)=>setSearch(e.target.value)} placeholder="Search Todos..." /> 
           <IconButton
+          mr="10px"
            type="submit"
            color="#F57C00"
             aria-label="Search database"
