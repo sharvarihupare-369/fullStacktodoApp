@@ -2,7 +2,7 @@
 
 A simple full-stack todo application built with React, Redux, TypeScript, Express, Node.js, and MongoDB.
 
-(![Landing Page](frontend/src/Assets/homepage.png))
+![Landing Page](frontend/src/Assets/homepage.png)
 <!-- ![Login Page](frontend/src/Assets/login.png) -->
 
 ## Table of Contents
