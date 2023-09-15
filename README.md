@@ -62,6 +62,15 @@ Search for specific todos.
 Navigate through paginated todo lists.
 Enjoy organizing your tasks efficiently!
 
+### Todo Functionalities 
+  User can be able to do add the todos , toggle todos as well delete the todos.User can see pending and completed todos as well.
+  
+  ![Todos](frontend/src/Assets/add.png)
+
+### Update Todo 
+  User can be able to update todos as user wants.
+
+  ![Update Todos](frontend/src/Assets/update.png)
 
 ## Technologies Used
 
