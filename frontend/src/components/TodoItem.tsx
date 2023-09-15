@@ -237,6 +237,8 @@ const TodoItem = () => {
         </Heading>
       
         { 
+        filteredTodos.length === 0 && token ? <Text color={"white"} mt="5px" >No todos Added Yet!</Text> 
+        :
          filteredTodos.map((el: any, i: number) => {
           // console.log(el)
           return (

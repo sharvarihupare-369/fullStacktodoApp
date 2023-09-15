@@ -141,7 +141,8 @@ const Navbar = () => {
 
       
 
-          <Link
+          {
+            !token ? <Link
             textDecoration={"none"}
             ml="10px"
             bg="#F57C00"
@@ -153,7 +154,8 @@ const Navbar = () => {
           >
             {/* <Image src={signupimg} /> */}
             Signup
-          </Link>
+          </Link> : "" 
+          }
           {/* </Box> */}
           {/* <Box> */}
           {
