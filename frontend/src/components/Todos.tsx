@@ -7,12 +7,9 @@ import TodoItem from './TodoItem'
 const Todos = () => {
   return (
    <Box p="10px">
-
-
     <Navbar/>
     <TodoInput/>
-
-   <TodoItem/>
+    <TodoItem/>
    </Box>
   )
 }

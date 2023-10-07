@@ -31,10 +31,10 @@ export const logout = (token:string) => (dispatch:any) => {
       'Authorization': `Bearer ${token}`
     }
   }).then((res)=>{
-    console.log(res)
+    // console.log(res)
     dispatch({type:AUTH_LOGOUT_SUCCESS,payload:res.data.msg})
   }).catch((err)=>{
-    console.log(err)
+    // console.log(err)
     dispatch({type:AUTH_LOGOUT_FAILURE,payload:err.response.data})
   })
 }

@@ -25,9 +25,9 @@ const Navbar = () => {
       dispatch(getTodos(token,search))
   }
 
-  const handleLogout = () => {
-    dispatch(logout(token))
-  
+  const handleLogout = async() => {
+    await dispatch(logout(token))
+    await localStorage.removeItem("todo-token")
   }
 
   useEffect(() => {

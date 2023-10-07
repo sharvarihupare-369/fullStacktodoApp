@@ -186,27 +186,13 @@ const TodoItem = () => {
   return (
     <>
     
-      <Flex  w={{ base: "100%", sm: "100%", md: "90%", lg: "60%", xl: "50%" }} mt="20px" justifyContent={"center"} alignItems={"center"}>
+      <Flex  w={{ base: "100%", sm: "100%", md: "90%", lg: "60%", xl: "50%" }} m="20px auto" justifyContent={"center"} alignItems={"center"}>
 
       {
         token ? 
-      //   <Menu>
-      //   <MenuButton>
-      //     <HamburgerIcon style={{
-      //     color: "white",
-      //     fontSize: "30px",
-      //     display: "flex",
-      //     justifyContent: "left",
-      //   }}/></MenuButton>
-      //   <MenuList>
-      //     <MenuItem _hover={{bg:"#F57C00",color:"white"}} onClick={handleAllTodos}>All</MenuItem>
-      //     <MenuItem _hover={{bg:"#F57C00",color:"white"}} onClick={handlePendingTodos}>Pending</MenuItem>
-      //     <MenuItem _hover={{bg:"#F57C00",color:"white"}} onClick={handleCompleted}>Completed</MenuItem>
-          
-      //   </MenuList>
-      // </Menu> 
+    
    
-      <Flex alignItems={'center'} w={{ base: "100%", sm: "100%", md: "90%", lg: "60%", xl: "50%" }} justifyContent={"space-around"}>
+      <Flex  w={{ base: "100%", sm: "100%", md: "90%", lg: "60%", xl: "50%" }}  alignItems={'center'} justifyContent={"space-around"}>
       <Button _hover={{bg:"#F57C00",color:"white"}} onClick={handleAllTodos}>All Todos</Button>
       <Button _hover={{bg:"#F57C00",color:"white"}} onClick={handlePendingTodos}>Pending</Button>
       <Button _hover={{bg:"#F57C00",color:"white"}} onClick={handleCompleted}>Completed</Button>
@@ -222,16 +208,9 @@ const TodoItem = () => {
         m={"30px auto"}
       >
         <Flex justifyContent={"space-around"} alignItems={"center"} m="10px">
-        {/* <Button onClick={handleAllTodos}>All Todos :-{totalTodos}</Button>
-        <Button onClick={handlePendingTodos}>Pending</Button>
-        <Button onClick={handleCompleted}>Completed</Button> */}
+       
         </Flex>
-        {/* <Text color={"white"}>Total Todos: {</Text> */}
-
-        {/* <Heading color={"#F57C00"} size={"md"}>
-         {token ?  `Total Todos : ${filteredTodos.length}` : ""}
-        </Heading> */}
-
+       
         <Heading color={"#E0E0E0"} size={"md"}>
          {token ?  "TODAY'S TASKS" : ""}
         </Heading>
