@@ -67,7 +67,7 @@ Enjoy organizing your tasks efficiently!
   User can be able to do add the todos , toggle todos as well delete the todos.User can see pending and completed todos as well.
   
   <!-- ![Todos](frontend/src/Assets/add.png) -->
-  [Todos](frontend/src/Assets/alltodos.png)
+  ![Todos](frontend/src/Assets/alltodos.png)
 ### Update Todo 
   User can be able to update todos as user wants.
 
