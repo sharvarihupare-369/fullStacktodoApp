@@ -2,7 +2,8 @@
 
 A simple full-stack todo application built with React, Redux, TypeScript, Express, Node.js, and MongoDB.
 
-![Landing Page](frontend/src/Assets/homepage.png)
+![Landing Page](frontend/src/Assets/landingPage.png)
+<!-- ![Landing Page](frontend/src/Assets/homepage.png) -->
 <!-- ![Login Page](frontend/src/Assets/login.png) -->
 
 ## Table of Contents
@@ -65,13 +66,13 @@ Enjoy organizing your tasks efficiently!
 ### Todo Functionalities 
   User can be able to do add the todos , toggle todos as well delete the todos.User can see pending and completed todos as well.
   
-  ![Todos](frontend/src/Assets/add.png)
-
+  <!-- ![Todos](frontend/src/Assets/add.png) -->
+    ![Todos](frontend/src/Assets/alltodos.png)
 ### Update Todo 
   User can be able to update todos as user wants.
 
-  ![Update Todos](frontend/src/Assets/update.png)
-
+  <!-- ![Update Todos](frontend/src/Assets/update.png) -->
+![Update Todos](<frontend/src/Assets/update (2).png>)
 ## Technologies Used
 
 - Frontend:
