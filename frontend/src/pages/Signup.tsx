@@ -201,7 +201,7 @@ import signupImg from '../Assets/loginvectorimagetodo.png'
                   Already a user? <Link color={'blue.400'} href="/login">Login</Link>
                 </Text>
               </Stack>
-            </Stack>
+              </Stack>
           </Box>
         </Stack>
       </Flex>

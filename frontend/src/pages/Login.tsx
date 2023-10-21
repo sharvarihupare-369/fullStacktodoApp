@@ -76,19 +76,26 @@ export default function Login() {
 
 
   return (
-    <Box bg={"#FDF6DF"} 
+    <Box
+    //  bg={"#FDF6DF"} 
     // bgGradient="linear(to-r, #000046, #1CB5E0)"  
-    bgGradient= "linear(to-r,#333333, #b1b6bc)"
-      bgSize="cover"
-    bgPosition="center" minH={"100vh"}>
+      bgGradient= "linear(to-r,#333333, #b1b6bc)"
+      // bgSize="cover"
+      // bgPosition="center"
+       minH={"100vh"}
+      >
       <Flex justifyContent={"space-around"} alignItems={"center"}>
-
+      <Box  display={{base:"none",sm:"none",md:"none",lg:"block"}} w={{base:"100%",sm:"100%",md:"100%",lg:"50%",xl:"50%"}} mt={{base:"10px",sm:"10px","md":"10px",lg:"0"}}>
+          <Image w="100%"  src={loginImg} />
+        </Box>
       <form className="animate__animated animate__zoomInDown" style={{width:"50%"}} onSubmit={handleLogin}>
 
     <Flex
       minH={'100vh'}
       align={'center'}
       justify={'center'}
+      justifyContent={{base:"center",sm:"center",md:"center",lg:"space-around",xl:"space-around","2xl":"space-around"}}
+      flexDirection={{base:"column",sm:"column",md:"column",lg:"row",xl:"row","2xl":"row"}}
       // bg={useColorModeValue('gray.50', 'gray.800')}
       >
       <Stack spacing={8} mx={'auto'} w={'lg'} py={12} px={6}>
@@ -142,9 +149,7 @@ export default function Login() {
       </Stack>
     </Flex>
      </form>
-     <Box w="50%">
-          <Image w="100%"  src={loginImg} />
-        </Box>
+     
       </Flex>
     </Box>
   );
