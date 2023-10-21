@@ -20,6 +20,7 @@ import { Dispatch } from 'redux';
 import { login } from '../redux/authReducer/action';
 import { useLocation, useNavigate } from 'react-router-dom';
 import signupImg from '../Assets/signup.avif'
+import loginImg from '../Assets/loginvectorimagetodo.png'
 import 'animate.css';
 
 export default function Login() {
@@ -75,7 +76,10 @@ export default function Login() {
 
 
   return (
-    <Box bg={"#FDF6DF"} bgGradient="linear(to-r, #000046, #1CB5E0)"    bgSize="cover"
+    <Box bg={"#FDF6DF"} 
+    // bgGradient="linear(to-r, #000046, #1CB5E0)"  
+    bgGradient= "linear(to-r,#333333, #b1b6bc)"
+      bgSize="cover"
     bgPosition="center" minH={"100vh"}>
       <Flex justifyContent={"space-around"} alignItems={"center"}>
 
@@ -109,21 +113,24 @@ export default function Login() {
               <Input type="password" name="pass" value={pass} onChange={(e)=>setPass(e.target.value)} />
             </FormControl>
             <Stack spacing={10}>
-              <Stack
+              {/* <Stack
                 direction={{ base: 'column', sm: 'row' }}
                 align={'start'}
                 justify={'space-between'}>
                 <Checkbox>Remember me</Checkbox>
                 <Link color={'blue.400'}>Forgot password?</Link>
-              </Stack>
+              </Stack> */}
              
               <Button
                 type='submit'
-                bg={'blue.400'}
+                // bg={'blue.400'}
+                bg="#212121"
                 color={'white'}
-                _hover={{
-                  bg: 'blue.500',
-                }}>
+                // _hover={{
+                //   bg: 'blue.500',
+                // }}
+                variant={"unstyled"}
+                >
                 Sign in
               </Button>
               <Text align={'center'}>
@@ -136,7 +143,7 @@ export default function Login() {
     </Flex>
      </form>
      <Box w="50%">
-          <Image w="100%"  src={signupImg} />
+          <Image w="100%"  src={loginImg} />
         </Box>
       </Flex>
     </Box>

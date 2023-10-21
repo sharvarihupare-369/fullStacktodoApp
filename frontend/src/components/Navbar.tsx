@@ -111,9 +111,12 @@ const Navbar = () => {
       <Flex alignItems={"center"} flexDirection={{base:"column",sm:"column",md:"row",lg:"row",xl:"row","2xl":"row"}} justifyContent={{base:"space-around",sm:"space-around",md:"space-around",lg:"space-around",xl:"space-around","2xl":"space-around"}}>
         <Heading color={"#F57C00"}>{currDay}</Heading>
         
-        <Flex  w="55%" alignItems={"center"} justifyContent={"flex-end"}>
+        <Flex   alignItems={"center"} justifyContent={"flex-end"}>
 
       
+       
+       </Flex>
+        <Flex mt={{base:"10px",sm:"10px",md:"10px",lg:"0px",xl:"0px","2xl":"0px"}} w={{base:"90%",sm:"90%",md:"80%",lg:"55%",xl:"55%","2xl":"55%"}} justifyContent={{base:"center",sm:"center",md:"center",lg:"flex-end",xl:"flex-end","2xl":"flex-end"}}  gap="5px" alignItems={"center"} >
         {
           token ? <form onSubmit={handleSearch}>
           <Flex gap="5px">
@@ -131,15 +134,6 @@ const Navbar = () => {
             </Flex>
             </form>  : ""
        }
-       </Flex>
-        <Flex w="10%" gap="5px" alignItems={"center"} flexDirection={{base:"column",sm:"column",md:"row",lg:"row",xl:"row","2xl":"row"}} justifyContent={{base:"space-around",sm:"space-around",md:"space-around",lg:"space-around",xl:"space-around","2xl":"space-around"}}>
-          {/* <Box> */}
-        {/* {
-          toggleSearch ? <Input variant='filled' placeholder='Filled' /> : ""
-
-        } */}
-
-      
 
           {
             !token ? <Link
@@ -156,8 +150,7 @@ const Navbar = () => {
             Signup
           </Link> : "" 
           }
-          {/* </Box> */}
-          {/* <Box> */}
+       
           {
             token ?  <Link
             bg="#F57C00"
@@ -166,6 +159,7 @@ const Navbar = () => {
             borderTopLeftRadius={"10px"}
             borderBottomRightRadius={"10px"}
             onClick={handleLogout}
+           
           >
             Logout
           </Link> :

@@ -28,7 +28,8 @@ import {
 } from "../redux/todoReducer/action";
 import 'animate.css';
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { ArrowLeftIcon, ArrowRightIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { AiFillDelete } from "react-icons/ai";
+import { ArrowLeftIcon, ArrowRightIcon, DeleteIcon, EditIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Menu,
   MenuButton,
@@ -224,8 +225,9 @@ const TodoItem = () => {
             <Flex
               className="animate__animated animate__bounceInLeft"
               boxShadow="rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px"
-              bgGradient={el.status ?  "linear-gradient(to right, #000046, #01D0A9, #01D0A9)" : "linear(to-r, #000046, #1CB5E0, #01A9DB)"}
-              
+              // bgGradient={el.status ?  "linear-gradient(to right, #000046, #01D0A9, #01D0A9)" : "linear(to-r, #595656, #b1b6bc)"}
+              bgGradient= "linear(to-r,#333333, #b1b6bc)"
+              opacity={el?.status && 0.5}
               color={"gray.300"}
               p={"25px 15px"}
               // borderRadius={"20px"}
@@ -235,15 +237,16 @@ const TodoItem = () => {
               key={i}
               justifyContent={"space-between"}
               alignItems={"center"}
-              flexDirection={isLargerThanMD ? "row" : "column"}
+              
             >
-              <Flex alignItems={"center"} gap={"20px"}>
+              <Flex   alignItems={"center"} gap={"20px"}>
                 <Checkbox
                   // isChecked={el.status} name="status" onChange={(e)=>handleStatus(e,el._id,i)}
                   isChecked={el.status}
                   name="status"
                   onChange={() => handleToggle(el._id)}
-                  borderColor={"#eb06ff"}
+                  // borderColor={"#eb06ff"}
+                  borderColor={"#F57C00"}
                 />
 
                 {editInput[i] ? (
@@ -256,7 +259,7 @@ const TodoItem = () => {
                     }
                   }
                   >
-                    <Flex gap="5px">
+                    <Flex alignItems={"center"} gap="5px">
                       <Input
                         value={title}
                         focusBorderColor="none"
@@ -288,13 +291,13 @@ const TodoItem = () => {
                textDecorationThickness={"2px"}
                textDecorationColor={"black"}
                fontSize={"lg"}
-               mb={isLargerThanMD ? "0" : "10px"}
+                
               >
                 {/* {el?.created_at.split("T")[0]} */}
                 {el.created_at ? el.created_at.split("T")[0] : ""}
               </Text>
 
-              <Flex gap={"10px"}>
+              <Flex alignItems={"center"} gap={"10px"}>
                 <Button
                   // onClick={()=>handleEdit(el._id)}
                   disabled={el.status}
@@ -304,13 +307,13 @@ const TodoItem = () => {
                     updatedEditInp[i] = !updatedEditInp[i];
                     setEditInput(updatedEditInp);
                   }}
-                  _hover={{ backgroundColor: "#237afe" }}
+                  _hover={{ backgroundColor: "#212121" }}
                   borderRadius={"50%"}
-                  bg={"#237afe"}
+                  bg={"#212121"}
                   color={"gray.200"}
                   size={isLargerThanMD ? "md" : "sm"}
                 >
-                  {<FaEdit />}
+                  {<EditIcon />}
                 </Button>
 
                 <Button
@@ -323,7 +326,7 @@ const TodoItem = () => {
                   borderRadius={"50%"}
                   size={isLargerThanMD ? "md" : "sm"}
                 >
-                  {<FaTrash />}
+                  {<DeleteIcon />}
                 </Button>
               </Flex>
             </Flex>

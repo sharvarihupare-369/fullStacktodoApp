@@ -24,7 +24,7 @@ import 'animate.css';
 import { Dispatch } from 'redux';
 import { signup } from '../redux/authReducer/action';
 import { useNavigate } from 'react-router-dom';
-import signupImg from '../Assets/signup.avif'
+import signupImg from '../Assets/loginvectorimagetodo.png'
 
  export type Formdata = {
     name : string,
@@ -108,7 +108,9 @@ import signupImg from '../Assets/signup.avif'
     
   
     return (
-      <Box bg={"#FDF6DF"}  bgGradient="linear(to-r, #000046, #1CB5E0)"  
+      <Box bg={"#FDF6DF"} 
+      bgGradient= "linear(to-r,#333333, #b1b6bc)"
+      //  bgGradient="linear(to-r, #000046, #1CB5E0)"  
         // bgSize="cover"
       // bgPosition="center"
        >
@@ -180,14 +182,17 @@ import signupImg from '../Assets/signup.avif'
               </FormControl>
               <Stack spacing={10} pt={2}>
                 <Button
+                 bg="#212121"
                  type='submit'
                   loadingText="Submitting"
                   size="lg"
-                  bg={'blue.400'}
+                  variant={"unstyled"}
+                  // bg={'blue.400'}
                   color={'white'}
-                  _hover={{
-                    bg: 'blue.500',
-                  }}>
+                  // _hover={{
+                  //   bg: 'blue.500',
+                  // }}
+                  >
                   Sign up
                 </Button>
               </Stack>

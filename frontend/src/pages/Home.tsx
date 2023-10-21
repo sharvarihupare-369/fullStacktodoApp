@@ -6,7 +6,10 @@ import img1 from '../../Assets/45519.png'
 
 const Home = () => {
   return (
-    <Box   bgGradient="linear(to-r, #000046, #1CB5E0  )"
+    <Box  
+    
+    bg="#212121"
+    //  bgGradient="linear(to-r, #000046, #1CB5E0  )"
       bgSize="cover"
       bgPosition="center"
       minH="100vh"
